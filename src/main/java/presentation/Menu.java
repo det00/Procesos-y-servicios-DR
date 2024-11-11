@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class Menu {
         public void menuOpciones() {
             Scanner sca = new Scanner(System.in);
+            LibroController libroController = new LibroController();
             boolean salir = true;
             while (salir) {
             System.out.println("""
-                                   
                                    ╔═══════════════════════╗
                                    ║      BIBLIOTECA       ║
                                    ╠═══════════════════════╣
@@ -23,19 +23,18 @@ public class Menu {
                                    ║  ------------------   ║
                                    ║  4) AñadirLibro       ║
                                    ║  ------------------   ║
-                                   ║  5) Buscar todos      ║                               
+                                   ║  5) Buscar todos      ║
                                    ║  ------------------   ║
                                    ║  6) Salir             ║
                                    ╚═══════════════════════╝
                     """);
 
                 int opcion = Integer.parseInt(sca.nextLine());
-                salir = menuSwitch(opcion);
+                salir = menuSwitch(opcion, libroController);
             }
         }
 
-        private boolean menuSwitch(int opcion){
-            LibroController libroController = new LibroController();
+        private boolean menuSwitch(int opcion, LibroController libroController){
             Scanner scanner = new Scanner(System.in);
             switch (opcion) {
                 case 1 -> {

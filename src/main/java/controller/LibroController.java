@@ -4,7 +4,7 @@ import dao.LibroDAO;
 import model.Libro;
 
 public class LibroController {
-    LibroDAO ldao = LibroDAO.getInstance();
+    LibroDAO ldao = new LibroDAO();
 
     public void consultarISBN(Long ISBN) {
         if (ldao.consultarISBN(ISBN) != null) {
@@ -37,6 +37,8 @@ public class LibroController {
         }
     }
     public void consultarTodos() {
-        ldao.listaLibros.forEach(libro -> System.out.println(libro + "\n"));
+        for (Libro l:ldao.consultarTodos()){
+            System.out.println(l);
+        }
     }
 }

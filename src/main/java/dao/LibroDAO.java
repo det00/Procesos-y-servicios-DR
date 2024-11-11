@@ -8,12 +8,11 @@ import java.util.List;
 
 public class LibroDAO {
 
-    private static LibroDAO instancia;
-    public List<Libro> listaLibros;
+    private final List<Libro> listaLibros;
 
 
     public LibroDAO() {
-        listaLibros = new ArrayList<>();
+        this.listaLibros = new ArrayList<>();
         listaLibros.add(new Libro(12345234L, "La Biblia", "Anónimo", 30));
         listaLibros.add(new Libro(78569L, "Odisea", "Homero", 23));
         listaLibros.add(new Libro(234561L, "Don Quijote de la Mancha", "Miguel de Cervantes", 31));
@@ -21,12 +20,6 @@ public class LibroDAO {
         listaLibros.add(new Libro(5451289L, "El principito", "Antoine de Saint-Exupéry", 10));
     }
 
-    public static LibroDAO getInstance() {
-        if (instancia == null) {
-            instancia = new LibroDAO();
-        }
-        return instancia;
-    }
 
     public Libro consultarISBN(Long ISBN) {
         Libro encontrado = null;
@@ -60,8 +53,15 @@ public class LibroDAO {
 
     public boolean añadirLibro(Libro libro) {
         if (libro!=null){
+
             listaLibros.add(libro);
+            System.out.println("SDFS");
             return true;
         } else return false;
     }
-}
+
+    public List<Libro> consultarTodos(){
+        return listaLibros;
+
+        }
+    }
