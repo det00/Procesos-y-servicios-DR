@@ -2,16 +2,11 @@ package presentation;
 
 import controller.LibroController;
 import model.Libro;
-
 import java.util.Scanner;
 
 public class Menu {
-        public void menuOpciones() {
-            Scanner sca = new Scanner(System.in);
-            LibroController libroController = new LibroController();
-            boolean salir = true;
-            while (salir) {
-            System.out.println("""
+        public String mostrarMenu(){
+            return """
                                    ╔═══════════════════════╗
                                    ║      BIBLIOTECA       ║
                                    ╠═══════════════════════╣
@@ -27,14 +22,23 @@ public class Menu {
                                    ║  ------------------   ║
                                    ║  6) Salir             ║
                                    ╚═══════════════════════╝
-                    """);
+""";
+
+        }
+        public void menuOpciones() {
+
+            Scanner sca = new Scanner(System.in);
+            LibroController libroController = new LibroController();
+            boolean salir = true;
+            while (salir) {
+            System.out.println(mostrarMenu());
 
                 int opcion = Integer.parseInt(sca.nextLine());
                 salir = menuSwitch(opcion, libroController);
             }
         }
 
-        private boolean menuSwitch(int opcion, LibroController libroController){
+        public boolean menuSwitch(int opcion, LibroController libroController){
             Scanner scanner = new Scanner(System.in);
             switch (opcion) {
                 case 1 -> {
