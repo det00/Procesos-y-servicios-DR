@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Objects;
 
 
 public class Cliente {
@@ -15,14 +14,30 @@ public class Cliente {
             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
 
             String respuesta;
+            String opcion;
 
-            while (!Objects.equals(respuesta = in.readLine(), "")){
-                System.out.println(respuesta);
+            while (true) {
+                // Mostrar el menú recibido del servidor
+                while (!(respuesta = in.readLine()).isEmpty()) {
+                    System.out.println(respuesta);
+                }
+
+                // Pedir al usuario que elija una opción
+                System.out.println("Escoge opción: ");
+                opcion = userInput.readLine();
+                out.println(opcion);
+
+                // Si el usuario elige "6", salir del bucle
+                if (opcion.equals("6")) {
+                    System.out.println("Cerrando la conexión...");
+                    break;
+                }
+
+                // Leer y mostrar la respuesta del servidor para la opción seleccionada
+                while (!(respuesta = in.readLine()).isEmpty()) {
+                    System.out.println(respuesta);
+                }
             }
-
-            System.out.println("Escoge opción: ");
-            String opcion = userInput.readLine();
-            out.println(opcion);
 
             in.close();
             out.close();

@@ -6,26 +6,26 @@ import model.Libro;
 public class LibroController {
     LibroDAO ldao = new LibroDAO();
 
-    public void consultarISBN(Long ISBN) {
+    public Libro consultarISBN(Long ISBN) {
         if (ldao.consultarISBN(ISBN) != null) {
-            System.out.println(ldao.consultarISBN(ISBN));
+            return (ldao.consultarISBN(ISBN));
         } else
-            System.out.println("Libro con ISBN " + ISBN + " no encontrado");
+            return null;
     }
 
-    public void consultarTitulo(String titulo) {
+    public Libro consultarTitulo(String titulo) {
         if (ldao.consultarTitulo(titulo) != null) {
-            System.out.println(ldao.consultarTitulo(titulo));
+            return (ldao.consultarTitulo(titulo));
         } else
-            System.out.println("Libro con Titulo " + titulo + " no encontrado");
+            return null;
 
     }
 
-    public void consultarAutor(String autor) {
+    public Libro consultarAutor(String autor) {
         if (ldao.consultarAutor(autor) != null) {
-            System.out.println(ldao.consultarAutor(autor));
+            return(ldao.consultarAutor(autor));
         } else
-            System.out.println("Libro no con " + autor + " no encontrado");
+            return null;
     }
 
     public void añadirLibro(Libro libro) {
@@ -36,9 +36,10 @@ public class LibroController {
             System.out.println("Libro no añadido");
         }
     }
-    public void consultarTodos() {
+    public Libro consultarTodos() {
         for (Libro l:ldao.consultarTodos()){
-            System.out.println(l);
+            return(l);
         }
+        return null;
     }
 }
