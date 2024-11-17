@@ -1,44 +1,30 @@
 package controller;
-
 import dao.LibroDAO;
 import model.Libro;
+import java.util.List;
 
 public class LibroController {
     LibroDAO ldao = new LibroDAO();
 
-    public void consultarISBN(Long ISBN) {
-        if (ldao.consultarISBN(ISBN) != null) {
-            System.out.println(ldao.consultarISBN(ISBN));
-        } else
-            System.out.println("Libro con ISBN " + ISBN + " no encontrado");
+    public Libro consultarISBN(Long ISBN) {
+        return ldao.consultarISBN(ISBN);
     }
 
-    public void consultarTitulo(String titulo) {
-        if (ldao.consultarTitulo(titulo) != null) {
-            System.out.println(ldao.consultarTitulo(titulo));
-        } else
-            System.out.println("Libro con Titulo " + titulo + " no encontrado");
-
+    public Libro consultarTitulo(String titulo) {
+        return ldao.consultarTitulo(titulo);
     }
 
-    public void consultarAutor(String autor) {
-        if (ldao.consultarAutor(autor) != null) {
-            System.out.println(ldao.consultarAutor(autor));
-        } else
-            System.out.println("Libro no con " + autor + " no encontrado");
+    public List<Libro> consultarAutor(String autor) {
+        return ldao.consultarAutor(autor);
     }
 
-    public void añadirLibro(Libro libro) {
-        if (ldao.añadirLibro(libro)) {
-            System.out.println("Libro añadido correctamente");
-            System.out.println(libro);
-        } else {
-            System.out.println("Libro no añadido");
-        }
+    public boolean añadirLibro(Libro libro) {
+        return ldao.añadirLibro(libro);
     }
-    public void consultarTodos() {
-        for (Libro l:ldao.consultarTodos()){
-            System.out.println(l);
-        }
+
+    public List<Libro> consultarTodos() {
+        return ldao.consultarTodos();
     }
 }
+
+

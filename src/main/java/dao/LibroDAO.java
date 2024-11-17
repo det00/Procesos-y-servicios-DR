@@ -32,36 +32,33 @@ public class LibroDAO {
     }
 
     public Libro consultarTitulo(String titulo) {
-        Libro encontrado = null;
         for (Libro l : listaLibros) {
-            if (l.getTitulo().equals(titulo)) {
-                return encontrado = l;
+            if (l.getTitulo().equalsIgnoreCase(titulo)) {
+                return l;
             }
         }
-        return encontrado;
+        return null;
     }
 
-    public Libro consultarAutor(String autor) {
-        Libro encontrado = null;
-        for (Libro l : listaLibros) {
-            if (l.getAutor().equals(autor)) {
-                return encontrado = l;
+
+    public List<Libro> consultarAutor(String autor) {
+        List<Libro> librosAutor = new ArrayList<>();
+        for (Libro l : listaLibros)
+            if (l.getAutor().equalsIgnoreCase(autor)){
+                librosAutor.add(l);
             }
-        }
-        return encontrado;
+        return librosAutor;
     }
 
     public boolean añadirLibro(Libro libro) {
-        if (libro!=null){
-
+        if (libro != null) {
             listaLibros.add(libro);
-            System.out.println("SDFS");
             return true;
-        } else return false;
-    }
-
-    public List<Libro> consultarTodos(){
-        return listaLibros;
-
         }
+        return false;
     }
+
+    public List<Libro> consultarTodos() {
+        return listaLibros;
+    }
+}
