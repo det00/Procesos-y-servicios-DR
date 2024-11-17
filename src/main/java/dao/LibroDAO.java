@@ -52,7 +52,9 @@ public class LibroDAO {
 
     public boolean añadirLibro(Libro libro) {
         if (libro != null) {
-            listaLibros.add(libro);
+            synchronized (this){
+                listaLibros.add(libro);
+            }
             return true;
         }
         return false;
