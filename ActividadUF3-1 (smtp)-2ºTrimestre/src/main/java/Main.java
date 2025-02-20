@@ -13,19 +13,10 @@ public class Main {
         Properties propiedades = new Properties();
         propiedades.put("mail.smtp.auth", "true");
         propiedades.put("mail.smtp.starttls.enable", "true");
-        propiedades.put("mail.smtp.host", "smtp.gmail.com");
+        propiedades.put("mail.smtp.host", "smtp.miservidor.com");
         propiedades.put("mail.smtp.port", "587");
-        propiedades.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        propiedades.put("mail.smtp.ssl.trust", "smtp.miservidor.com");
         propiedades.put("mail.smtp.ssl.protocols", "TLSv1.2");
-
-        /*  ORIGINAL
-        propiedades.put("mail.smtp.starttls.enable", "true");
-        propiedades.put("mail.smtp.host", "smtp.gmail.com");
-        propiedades.put("mail.smtp.port", "587");
-        propiedades.put("mail.smtp.auth", "true");
-        propiedades.put("mail.smtp.user", "miUsuario@gmail.com");
-        */
-
 
         // Sesión con las propiedades configuradas
 
